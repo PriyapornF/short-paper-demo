@@ -1,0 +1,171 @@
+@media screen and (max-width: 600px) {
+  * {
+    font-family: "Kanit";
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .MainHeader_mainHeader .MainHeader_content {
+    display: none;
+  }
+
+  .MainHeader_mainHeader {
+    display: block;
+    position: sticky;
+    z-index: 18;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background-image: url("./public/img/footer/marketing-footer-mobile.png");
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .MainHeader_mainHeader .MainHeader_background {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .MainHeader_mainHeader .MainHeader_cta {
+    display: flex;
+    margin-left: auto;
+    color: white;
+    margin-top: 5px;
+  }
+
+  .MainHeader_mainHeader .MainHeader_cta_name {
+    margin-left: 10px;
+  }
+
+  .MainHeader_mainHeader .MainHeader_logoLink {
+    position: absolute;
+    left: 22%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+  }
+
+  .MainHeader_mainHeader .MainHeader_container {
+    height: inherit;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 20px;
+  }
+
+  .MainHeader_mainHeader .MainHeader_hamburger {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    box-sizing: border-box;
+    fill: #fff;
+  }
+  .MainHeader_mainHeader .MainHeader_search {
+    align-self: center;
+  }
+
+  .MainHeader_mainHeader .MainHeader_search input {
+    border-color: #fff;
+    border-radius: 50px;
+    width: 300px;
+    height: auto;
+  }
+
+  .MainHeader_mainHeader .MainHeader_search input::placeholder {
+    padding: 15px;
+    color: #a6a6a6;
+  }
+
+  .MainHeader_mainHeader .MainHeader_searchIcon {
+    position: absolute;
+    top: 78px;
+    right: 80px;
+    color: #a6a6a6;
+  }
+
+  .MainHeader_mainHeader .MainHeader_logo {
+    width: 50px;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+
+  .Hero_banner {
+    display: block;
+  }
+
+  .Top_ten {
+    background-color: #b2c9dd;
+    width: 100%;
+  }
+
+  .Main_Top_ten {
+    display: flex;
+    height: 100px;
+  }
+
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 5px;
+    width: 20px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active,
+  .dot:hover {
+    background-color: #717171;
+  }
+
+  .fade {
+    animation-name: fade;
+    animation-duration: 0.2s;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
