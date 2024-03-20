@@ -20,17 +20,19 @@
     <section id="header" class="MainHeader_mainHeader">
       <div style="display: flex; flex-direction: column">
         <div class="MainHeader_container">
-          <svg
-            height="612"
-            viewBox="0 0 612 612"
-            width="612"
-            xmlns="http://www.w3.org/2000/svg"
-            class="MainHeader_hamburger"
-          >
-            <path
-              d="M604.267 194.727c4.257 0 7.733-3.644 7.733-7.733v-40.169c0-4.256-3.283-7.733-7.733-7.733H7.733c-4.256 0-7.733 3.644-7.733 7.733v40.169c0 4.256 3.283 7.733 7.733 7.733zM0 326.084c0 4.256 3.283 7.733 7.733 7.733h596.533c4.256 0 7.733-3.645 7.733-7.733v-40.169c0-4.284-3.283-7.733-7.733-7.733H7.733c-4.256 0-7.733 3.645-7.733 7.733zM0 465.175c0 4.256 3.283 7.733 7.733 7.733h596.533c4.256 0 7.733-3.645 7.733-7.733v-40.169c0-4.256-3.283-7.732-7.733-7.732H7.733c-4.256 0-7.733 3.644-7.733 7.732z"
-            ></path>
-          </svg>
+          <div onclick="toggleCategories()">
+            <svg
+              height="612"
+              viewBox="0 0 612 612"
+              width="612"
+              xmlns="http://www.w3.org/2000/svg"
+              class="MainHeader_hamburger"
+            >
+              <path
+                d="M604.267 194.727c4.257 0 7.733-3.644 7.733-7.733v-40.169c0-4.256-3.283-7.733-7.733-7.733H7.733c-4.256 0-7.733 3.644-7.733 7.733v40.169c0 4.256 3.283 7.733 7.733 7.733zM0 326.084c0 4.256 3.283 7.733 7.733 7.733h596.533c4.256 0 7.733-3.645 7.733-7.733v-40.169c0-4.284-3.283-7.733-7.733-7.733H7.733c-4.256 0-7.733 3.645-7.733 7.733zM0 465.175c0 4.256 3.283 7.733 7.733 7.733h596.533c4.256 0 7.733-3.645 7.733-7.733v-40.169c0-4.256-3.283-7.732-7.733-7.732H7.733c-4.256 0-7.733 3.644-7.733 7.732z"
+              ></path>
+            </svg>
+          </div>
           <img
             src="./public/img/icon.png"
             class="MainHeader_logoLink"
@@ -91,6 +93,49 @@
     <section id="top-ten-product" class="Top_ten">
       <img src="public/img/Article.png" style="width: 100%" />
     </section>
+    <section id="menu" class="Menu">
+      <div class="MenuHeader">
+        <div id="backButton" class="BackButton backSymbol" onclick="goBack()">
+          &#10094;
+        </div>
+        <h1 id="menuTitle" class="MenuTitle">หมวดหมู่สินค้า</h1>
+      </div>
+      <ul id="categoryList" class="MenuList">
+        <li class="MenuItem" onclick="toggleSubMenu('searchFromRoom')">
+          <div class="MenuItemContent">
+            <span>ค้นหาจากห้อง</span>
+            <span class="forwordSymbol">></span>
+          </div>
+        </li>
+        <li class="MenuItem" onclick="toggleSubMenu('building')">
+          <div class="MenuItemContent">
+            <span>ก่อสร้าง</span>
+            <span class="forwordSymbol">></span>
+          </div>
+        </li>
+        <li class="MenuItem">
+          <div class="MenuItemContent">
+            <span>ตกแต่ง</span>
+          </div>
+        </li>
+        <li class="MenuItem">
+          <div class="MenuItemContent">
+            <span>สินค้าเพื่อที่อยู่อาศัย</span>
+          </div>
+        </li>
+        <li class="MenuItem" onclick="toggleSubMenu('services')">
+          <div class="MenuItemContent">
+            <span>บริการเรื่องบ้าน</span><span class="forwordSymbol">></span>
+          </div>
+        </li>
+        <li class="MenuItem">
+          <div class="MenuItemContent">
+            <span>โปรโมชั่น</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section id="sub-menu" class="SubCategories"></section>
     <script>
       let slideIndex = 0;
       showSlides();
@@ -111,7 +156,7 @@
         }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 3000); // Change image every 2 seconds
+        setTimeout(showSlides, 3000);
       }
 
       function plusSlides(n) {
@@ -120,6 +165,108 @@
 
       function currentSlide(n) {
         showSlides((slideIndex = n));
+      }
+
+      function toggleCategories() {
+        const menu = document.getElementById("menu");
+        if (menu.style.left === "-100%") {
+          menu.style.left = "0";
+        } else {
+          goBack();
+        }
+      }
+
+      function goBack() {
+        const menu = document.getElementById("menu");
+        menu.style.left = "-100%";
+      }
+
+      function getSubCategories(subMenuId) {
+        let categories = [];
+
+        if (subMenuId === "searchFromRoom") {
+          categories = [
+            "ห้องน้ำ",
+            "ห้องครัว",
+            "ห้องทำงาน",
+            "ห้องซักล้าง",
+            "ห้องเด็ก",
+            "ห้องนั่งเล่น",
+            "พื้นที่นอกบ้าน",
+          ];
+        }
+
+        if (subMenuId === "building") {
+          categories = ["ออกแบบ", "โครงสร้าง", "ระบบไฟฟ้า ประปา สุขาภิบาล"];
+        }
+        if (subMenuId === "services") {
+          categories = ["ดูแลรักษาบ้าน", "ซ่อมแซม ปรับปรุง", "ติดตั้ง ต่อเติม"];
+        }
+
+        return categories;
+      }
+
+      function toggleSubMenu(subMenuId) {
+        const subCategoriesSection = document.getElementById("sub-menu");
+        subCategoriesSection.innerHTML = "";
+
+        const menuHeader = document.createElement("div");
+        menuHeader.classList.add("MenuHeader");
+
+        const backButton = document.createElement("div");
+        backButton.id = "backButton";
+        backButton.classList.add("BackButton");
+        backButton.innerHTML = "&#10094;";
+        backButton.classList.add("backSymbol");
+        backButton.onclick = goBackMainCategories;
+
+        const menuTitle = document.createElement("h2");
+        menuTitle.id = "menuTitle";
+        menuTitle.classList.add("MenuTitle");
+        menuTitle.textContent = subMenuId;
+
+        menuHeader.appendChild(backButton);
+        menuHeader.appendChild(menuTitle);
+
+        const categoryList = document.createElement("ul");
+        categoryList.id = "categoryList";
+        categoryList.classList.add("MenuList");
+
+        const categories = getSubCategories(subMenuId || "");
+
+        categories.forEach((category) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("MenuItem");
+
+          const listItemContent = document.createElement("div");
+          listItemContent.classList.add("MenuItemContent");
+
+          const categoryName = document.createElement("span");
+          categoryName.textContent = category;
+
+          // const symbol = document.createElement("span");
+          // symbol.textContent = ">";
+          // symbol.classList.add("forwordSymbol");
+
+          listItemContent.appendChild(categoryName);
+          // listItemContent.appendChild(symbol);
+          listItem.appendChild(listItemContent);
+          categoryList.appendChild(listItem);
+        });
+
+        subCategoriesSection.appendChild(menuHeader);
+        subCategoriesSection.appendChild(categoryList);
+
+        if (subCategoriesSection.style.left !== "0%") {
+          subCategoriesSection.style.left = "0%";
+        } else {
+          subCategoriesSection.style.left = "-100%";
+        }
+      }
+
+      function goBackMainCategories() {
+        const subMenu = document.getElementById("sub-menu");
+        subMenu.style.left = "-100%";
       }
     </script>
   </body>
